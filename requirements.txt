@@ -8,3 +8,4 @@ pymongo[srv]
 motor
 numpy>=1.26.0
 faiss-cpu
+pydantic>=2.9.0
