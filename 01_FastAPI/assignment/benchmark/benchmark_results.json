@@ -1,0 +1,180 @@
+{
+  "FastAPI": {
+    "GET /ping (trivial)": [
+      {
+        "concurrency": 1,
+        "total_requests": 200,
+        "wall_time_s": 2.23,
+        "throughput_rps": 89.7,
+        "latency_mean_ms": 11.11,
+        "latency_median_ms": 5.55,
+        "latency_p95_ms": 27.74
+      },
+      {
+        "concurrency": 10,
+        "total_requests": 200,
+        "wall_time_s": 0.385,
+        "throughput_rps": 519.7,
+        "latency_mean_ms": 18.67,
+        "latency_median_ms": 17.92,
+        "latency_p95_ms": 29.64
+      },
+      {
+        "concurrency": 50,
+        "total_requests": 200,
+        "wall_time_s": 0.403,
+        "throughput_rps": 496.5,
+        "latency_mean_ms": 62.15,
+        "latency_median_ms": 63.49,
+        "latency_p95_ms": 95.18
+      }
+    ],
+    "POST /echo (validated)": [
+      {
+        "concurrency": 1,
+        "total_requests": 200,
+        "wall_time_s": 2.174,
+        "throughput_rps": 92.0,
+        "latency_mean_ms": 10.83,
+        "latency_median_ms": 6.58,
+        "latency_p95_ms": 26.61
+      },
+      {
+        "concurrency": 10,
+        "total_requests": 200,
+        "wall_time_s": 0.622,
+        "throughput_rps": 321.7,
+        "latency_mean_ms": 30.43,
+        "latency_median_ms": 23.0,
+        "latency_p95_ms": 92.31
+      },
+      {
+        "concurrency": 50,
+        "total_requests": 200,
+        "wall_time_s": 0.5,
+        "throughput_rps": 400.2,
+        "latency_mean_ms": 86.55,
+        "latency_median_ms": 90.49,
+        "latency_p95_ms": 129.14
+      }
+    ],
+    "GET /compute (CPU-bound)": [
+      {
+        "concurrency": 1,
+        "total_requests": 200,
+        "wall_time_s": 2.565,
+        "throughput_rps": 78.0,
+        "latency_mean_ms": 12.79,
+        "latency_median_ms": 7.6,
+        "latency_p95_ms": 29.75
+      },
+      {
+        "concurrency": 10,
+        "total_requests": 200,
+        "wall_time_s": 0.484,
+        "throughput_rps": 413.4,
+        "latency_mean_ms": 22.94,
+        "latency_median_ms": 22.19,
+        "latency_p95_ms": 30.43
+      },
+      {
+        "concurrency": 50,
+        "total_requests": 200,
+        "wall_time_s": 0.545,
+        "throughput_rps": 367.3,
+        "latency_mean_ms": 90.57,
+        "latency_median_ms": 97.88,
+        "latency_p95_ms": 141.16
+      }
+    ]
+  },
+  "Flask": {
+    "GET /ping (trivial)": [
+      {
+        "concurrency": 1,
+        "total_requests": 200,
+        "wall_time_s": 2.656,
+        "throughput_rps": 75.3,
+        "latency_mean_ms": 13.24,
+        "latency_median_ms": 15.02,
+        "latency_p95_ms": 26.36
+      },
+      {
+        "concurrency": 10,
+        "total_requests": 200,
+        "wall_time_s": 0.568,
+        "throughput_rps": 352.0,
+        "latency_mean_ms": 27.43,
+        "latency_median_ms": 27.24,
+        "latency_p95_ms": 36.24
+      },
+      {
+        "concurrency": 50,
+        "total_requests": 200,
+        "wall_time_s": 0.579,
+        "throughput_rps": 345.6,
+        "latency_mean_ms": 103.14,
+        "latency_median_ms": 114.33,
+        "latency_p95_ms": 147.51
+      }
+    ],
+    "POST /echo (validated)": [
+      {
+        "concurrency": 1,
+        "total_requests": 200,
+        "wall_time_s": 2.952,
+        "throughput_rps": 67.7,
+        "latency_mean_ms": 14.73,
+        "latency_median_ms": 15.3,
+        "latency_p95_ms": 29.87
+      },
+      {
+        "concurrency": 10,
+        "total_requests": 200,
+        "wall_time_s": 0.613,
+        "throughput_rps": 326.1,
+        "latency_mean_ms": 29.56,
+        "latency_median_ms": 30.05,
+        "latency_p95_ms": 34.48
+      },
+      {
+        "concurrency": 50,
+        "total_requests": 200,
+        "wall_time_s": 0.599,
+        "throughput_rps": 334.1,
+        "latency_mean_ms": 109.56,
+        "latency_median_ms": 118.94,
+        "latency_p95_ms": 157.76
+      }
+    ],
+    "GET /compute (CPU-bound)": [
+      {
+        "concurrency": 1,
+        "total_requests": 200,
+        "wall_time_s": 3.039,
+        "throughput_rps": 65.8,
+        "latency_mean_ms": 15.16,
+        "latency_median_ms": 15.59,
+        "latency_p95_ms": 30.19
+      },
+      {
+        "concurrency": 10,
+        "total_requests": 200,
+        "wall_time_s": 0.653,
+        "throughput_rps": 306.1,
+        "latency_mean_ms": 31.62,
+        "latency_median_ms": 32.08,
+        "latency_p95_ms": 37.35
+      },
+      {
+        "concurrency": 50,
+        "total_requests": 200,
+        "wall_time_s": 0.603,
+        "throughput_rps": 331.9,
+        "latency_mean_ms": 110.81,
+        "latency_median_ms": 126.71,
+        "latency_p95_ms": 151.28
+      }
+    ]
+  }
+}
