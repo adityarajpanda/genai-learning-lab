@@ -9,4 +9,5 @@ pymongo[srv]
 motor
 numpy>=1.26.0
 faiss-cpu
+pinecone>=9.1.0
 pydantic>=2.9.0
