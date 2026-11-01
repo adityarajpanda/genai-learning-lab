@@ -7,6 +7,7 @@ from app.ui import pdf_uploader
 from app.vectorstore_utils import create_faiss_index, retrieve_similar_documents
 from langchain_text_splitters import RecursiveCharacterTextSplitter # for breaking large documents into smaller, manageable chunks
 
+import requests
 import os
 import time
 from dotenv import load_dotenv, find_dotenv
@@ -131,7 +132,7 @@ with st.sidebar:
                 # Create FAISS index
                 vectorstore = create_faiss_index(chunks)
                 st.session_state.vectorstore = vectorstore
-                
+
                 # Initialize chat model
                 chat_model = get_chat_model(api_key)
                 st.session_state.chat_model = chat_model
@@ -184,8 +185,17 @@ if prompt := st.chat_input("Ask about your medical documents..."):
                 User Question: {prompt}
 
                 Answer:"""
-                
-                response = ask_chat_model(st.session_state.chat_model, system_prompt)
+
+                try:
+                    response = ask_chat_model(st.session_state.chat_model, system_prompt)
+                except requests.exceptions.HTTPError as exc:
+                    if exc.response is None:
+                        raise
+                    st.error(
+                        f"Euri API returned HTTP {exc.response.status_code}: "
+                        f"{exc.response.text}"
+                    )
+                    st.stop()
             
             st.markdown(response)
             st.caption(timestamp)
