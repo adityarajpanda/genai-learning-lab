@@ -1,0 +1,26 @@
+1.) Implement the pdf_utils.py module. Write a function extract_text_from_pdf(pdf_file) that takes a PDF file as input and returns the 
+extracted text content as a single string. Ensure your implementation handles potential errors during PDF parsing and includes 
+appropriate error logging. Test your function with a sample medical PDF document.
+
+2.) Design and implement the vector_store_utils.py module. Create functions to initialize a FAISS index using the 
+sentence-transformers/all-mpnet-base-v2 embedding model, add document chunks and their embeddings to the index, and perform 
+similarity search to retrieve the top-k most similar document chunks for a given query embedding. Include unit tests to verify the 
+correctness of your FAISS index implementation.
+
+3.) Develop the chat_utils.py module. Implement a function get_chat_response(query, context) that takes a user query and a context 
+string (retrieved from the vector database) as input. Use the URI AI SDK to send the combined query and context to a 
+chat model (e.g., GPT-3.5) and return the model's response. Handle potential API errors and implement a retry mechanism with 
+exponential backoff.
+
+4.) Refactor the main.py application to support processing multiple PDF documents. Modify the UI to allow users to upload multiple PDF 
+files simultaneously. Update the ingestion pipeline to process each PDF document, chunk the text, generate embeddings, and add them to 
+the FAISS index. Ensure the chat interface can query across all uploaded documents.
+
+5.) Evaluate the performance of the medical chatbot using a set of predefined questions and medical documents. Measure the accuracy and 
+relevance of the chatbot's responses. Experiment with different chunking strategies (e.g., fixed-size chunks, semantic chunking) and 
+embedding models (e.g., different Sentence Transformers models) to optimize the chatbot's performance. Document your findings and 
+provide recommendations for improving the chatbot's accuracy and efficiency.
+
+6.) Extend the medical chatbot to support user authentication and authorization. Implement a secure login system using Streamlit's session 
+state management. Restrict access to sensitive medical information based on user roles (e.g., doctor, nurse, patient). Implement 
+appropriate security measures to protect user data and prevent unauthorized access.
