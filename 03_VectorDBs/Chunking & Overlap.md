@@ -1,0 +1,29 @@
+- Chunking and overlap are key preprocessing steps in ***Retrieval-Augmented Generation(RAG)*** and AI search systems. They control how large documents are split up, indexed, and fed into Large Language Models (LLMs).
+- **Chunking:**
+    -  Process of breaking down a large document (like a PDF, manual, or long article) into smaller, manageable segments of text.
+    - Why it matters:
+        - *Token limits:* 
+            - LLMs and embedding models have strict maximum context windows. 
+            - They cannot process a 500-page book all at once.
+        - *Precision:* 
+            - Searching through tiny, focused pieces of text lets vector databases pinpoint exact answers instead of returning an entire, noisy document.
+    - Common Chunking Methods:
+        - ***Fixed-Size Chunking:*** 
+            - Splits text strictly by a set number of characters or tokens (e.g., every 500 tokens). 
+            - Fast and simple, but can cut sentences or ideas in half.
+        - ***Recursive Character Splitter:*** 
+            - Tries to split by natural boundaries first (paragraphs, then lines, then sentences, then words) in a hierarchical way.
+        - ***Semantic Chunking:*** 
+            - Groups sentences together based on meaning (cosine similarity), starting a new chunk only when the topic or context shifts.
+- **Chunk Overlap:**
+    - Repeating a small portion of text from the end of one chunk at the beginning of the next chunk.
+    - *Example:* If Chunk 1 ends with a crucial sentence explaining a rule, the first few words or lines of Chunk 2 will repeat that exact same text.
+    - Why it matters:
+        - *Preventing boundary cuts:* 
+            - Without overlap, a critical sentence or idea can get sliced right down the middle, isolating words from their context (e.g., separating the word "dog" from the rule "do not bring your dog to work").
+	    - *Contextual bridge:* 
+            - Overlap ensures adjacent chunks share common tokens, helping the AI stitch together ideas that span across a cut point.
+    - The Trade-Off:
+        - *Too little overlap:* Risk of losing context or breaking sentences.
+	    - *Too much overlap (e.g., >30%):* Generates duplicate noise, inflates storage and embedding costs, and can cause search results to return near-duplicates instead of diverse evidence.
+	    - *Standard sweet spot:* General text usually uses a chunk size of 200–500 tokens (or characters) with roughly a 10% to 20% overlap
